@@ -6,43 +6,46 @@ import sqlite3 as lite
 import sys
 
 con = lite.connect('paliwko.db')
-cur = con.cursor()
 
 fuel = Tk()
-fuel.title("Paliwko ver. 1.5")
+fuel.title("Paliwko ver. 1.6")
 
 class Application(Frame):
-    def say_hi(self):
-        print "hi there!"
         
     def dodaj(self):
         print "dodaj!"
-        cur.execute("INSERT INTO tankowanie(przebieg, ilosc, koszt) VALUES(250321,21,99);")
+        tank = []
         a=licznik.get()
         a1=int(a)
+        tank.append(a1)
         b=ilosc.get()
         b1=int(b)
+        tank.append(b1)
         c=cena.get()
         c1=int(c)
+        tank.append(c1)
+        cur = con.cursor()
+        cur.execute("INSERT INTO tankowanie(przebieg, ilosc, koszt) VALUES(?,?,?)", tank)
+        cur.execute("INSERT INTO tankowanie(przebieg, ilosc, koszt) VALUES(250321,21,99);")
+        with con:    
+    
+			#cur = con.cursor()    
+			cur.execute("SELECT * FROM tankowanie")
+
+			rows = cur.fetchall()
 
     def createWidgets(self):
         self.QUIT = Button(self)
-        self.QUIT["text"] = "Wyjscie"
+        self.QUIT["text"] = "Koniec programu"
         self.QUIT["command"] =  self.quit
 
-        self.QUIT.pack({"side": "left"})
-
-        self.hi_there = Button(self)
-        self.hi_there["text"] = "Hello",
-        self.hi_there["command"] = self.say_hi
-
-        self.hi_there.pack({"side": "left"})
-        
+        self.QUIT.pack({"side": "bottom"})
+       
         self.dodaj_tankowanie = Button(self)
-        self.dodaj_tankowanie["text"] = "dodaj_tankowanie",
+        self.dodaj_tankowanie["text"] = "Dodaj",
         self.dodaj_tankowanie["command"] = self.dodaj 
 
-        self.dodaj_tankowanie.pack({"side": "left"})
+        self.dodaj_tankowanie.pack({"side": "top"})
        
 
     def __init__(self, master=None):
