@@ -26,6 +26,9 @@ class Application(Frame):
         tank.append(c1)
         cur = con.cursor()
         cur.execute("INSERT INTO tankowanie(przebieg, ilosc, koszt) VALUES(?,?,?)", tank)
+        licznik.delete(0, 'end')
+        ilosc.delete(0, 'end')
+        cena.delete(0, 'end')
         with con:    
  			cur.execute("SELECT * FROM tankowanie")
 			rows = cur.fetchall()
@@ -38,7 +41,7 @@ class Application(Frame):
        
         self.dodaj_tankowanie = Button(self)
         self.dodaj_tankowanie["text"] = "Dodaj",
-        self.dodaj_tankowanie["command"] = self.dodaj 
+        self.dodaj_tankowanie["command"] = self.dodaj
         self.dodaj_tankowanie.pack({"side": "top"})
 
     def __init__(self, master=None):
@@ -69,7 +72,6 @@ var.set("Podaj koszt paliwa.")
 label.pack() 
 cena = tk.Entry(fuel, width = 30, bg = "white", font = "Helvetica 14")
 cena.pack()
-
 
 fuel = Application(master=fuel)
 fuel.mainloop()

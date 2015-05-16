@@ -1,6 +1,6 @@
 Projekt aplikacji w języku Python z wykorzystaniem relacyjnej bazy danych SQLite.
 
 Paliwko - kalkulator paliwa.
-Wersja 2.1
+Wersja 2.5
 
-Ostatnia aktualizacja: 15.05.2015
+Ostatnia aktualizacja: 16.05.2015

@@ -7,7 +7,7 @@ import sys
 from os import popen
 
 fuel = Tk()
-fuel.title("Paliwko ver. 2.1")
+fuel.title("Paliwko ver. 2.5")
 
 frame = Frame(fuel, height = 10, width = 200)
 frame.pack()
