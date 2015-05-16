@@ -19,23 +19,25 @@ class Application(Frame):
         a1=int(a)
         tank.append(a1)
         b=ilosc.get()
-        b1=int(b)
+        b1=float(b)
         tank.append(b1)
-        c=cena.get()
-        c1=int(c)
+        c=koszt.get()
+        c1=float(c)
         tank.append(c1)
+        cena = c1/b1
+        tank.append(cena)
         cur = con.cursor()
-        cur.execute("INSERT INTO tankowanie(przebieg, ilosc, koszt) VALUES(?,?,?)", tank)
+        cur.execute("INSERT INTO tankowanie(przebieg, ilosc, koszt, cena) VALUES(?,?,?,?)", tank)
         licznik.delete(0, 'end')
         ilosc.delete(0, 'end')
-        cena.delete(0, 'end')
+        koszt.delete(0, 'end')
         with con:    
  			cur.execute("SELECT * FROM tankowanie")
 			rows = cur.fetchall()
 
     def createWidgets(self):
         self.QUIT = Button(self)
-        self.QUIT["text"] = "Koniec programu"
+        self.QUIT["text"] = "Wstecz"
         self.QUIT["command"] =  self.quit
         self.QUIT.pack({"side": "bottom"})
        
@@ -70,8 +72,8 @@ var = StringVar()
 label = Label( fuel, textvariable=var)
 var.set("Podaj koszt paliwa.")
 label.pack() 
-cena = tk.Entry(fuel, width = 30, bg = "white", font = "Helvetica 14")
-cena.pack()
+koszt = tk.Entry(fuel, width = 30, bg = "white", font = "Helvetica 14")
+koszt.pack()
 
 fuel = Application(master=fuel)
 fuel.mainloop()

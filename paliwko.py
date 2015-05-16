@@ -7,19 +7,26 @@ import sys
 from os import popen
 
 fuel = Tk()
-fuel.title("Paliwko ver. 2.5")
+fuel.title("Paliwko ver. 2.8")
+
+con = lite.connect('paliwko.db')
+cur = con.cursor()
 
 frame = Frame(fuel, height = 10, width = 200)
 frame.pack()
 
 class Application(Frame):
-        
+	
     def dodawanie(self):
         popen('python dodawanie.py')
-        
+              
     def tankowania(self):
 		popen('python dziennik.py')
-
+		
+    def czyszczenie(self):
+		cur.execute("DROP TABLE tankowanie;")
+		cur.execute("CREATE TABLE tankowanie(przebieg int not null, ilosc float not null, koszt float not null, cena float);")
+					
     def createWidgets(self):
         self.QUIT = Button(self)
         self.QUIT["text"] = "Koniec programu"
@@ -36,6 +43,11 @@ class Application(Frame):
         self.dziennik["command"] = self.tankowania
         self.dziennik.pack({"side":"top"})
         
+        self.czysc = Button(self)
+        self.czysc["text"] = "Wyczysc_Baze",
+        self.czysc["command"] = self.czyszczenie
+        self.czysc.pack({"side":"top"})
+               
     def __init__(self, master=None):
         Frame.__init__(self, master)
         self.pack()

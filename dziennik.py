@@ -28,13 +28,13 @@ class Application(Frame):
 			rows = cur.fetchall()
 			for row in rows:
 				paliwo.append(row)
-		#print paliwo
+				paliwo.append("\n")
 		wszystkie = Text(fuel)
-		wszystkie.insert(INSERT, paliwo) 
-               
+		wszystkie.insert(INSERT, paliwo)
+       
     def createWidgets(self):
         self.QUIT = Button(self)
-        self.QUIT["text"] = "Koniec programu"
+        self.QUIT["text"] = "Wstecz"
         self.QUIT["command"] =  self.quit
         self.QUIT.pack({"side": "bottom"})
              
