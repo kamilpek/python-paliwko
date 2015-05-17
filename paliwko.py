@@ -7,7 +7,7 @@ import sys
 from os import popen
 
 fuel = Tk()
-fuel.title("Paliwko ver. 2.8")
+fuel.title("Paliwko ver. 2.9")
 
 con = lite.connect('paliwko.db')
 cur = con.cursor()

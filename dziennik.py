@@ -7,7 +7,11 @@ import sys
 
 con = lite.connect('paliwko.db')
 cur = con.cursor()
+
 paliwo = []
+ost = []
+ilosc = []
+
 fuel = Tk()
 
 fuel.title("Dziennik tankowan")
@@ -18,39 +22,43 @@ with con:
 	rows = cur.fetchall()
 	for row in rows:
 		paliwo.append(row)
-
+		
+with con: 
+	cur = con.cursor()    
+	cur.execute("SELECT * FROM tankowanie")
+	rows = cur.fetchall()
+	ost.append(row)
+	
 class Application(Frame):
-        
-    def wyswietlanie(self):
-		with con: 
-			cur = con.cursor()    
-			cur.execute("SELECT * FROM tankowanie")
-			rows = cur.fetchall()
-			for row in rows:
-				paliwo.append(row)
-				paliwo.append("\n")
-		wszystkie = Text(fuel)
-		wszystkie.insert(INSERT, paliwo)
-       
+	
     def createWidgets(self):
         self.QUIT = Button(self)
         self.QUIT["text"] = "Wstecz"
         self.QUIT["command"] =  self.quit
         self.QUIT.pack({"side": "bottom"})
-             
-        self.dziennik = Button(self)
-        self.dziennik["text"] = "Wyswietl_wszystkie_tankowania",
-        self.dziennik["command"] = self.wyswietlanie
-        self.dziennik.pack({"side":"top"})
-        
-        self.w_tankowania = Text(self, height = 10, width = 80)
-        self.w_tankowania.insert(INSERT, paliwo)
-        self.w_tankowania.pack({"side":"top"})
-        
+                
     def __init__(self, master=None):
         Frame.__init__(self, master)
         self.pack()
         self.createWidgets()
+
+var = StringVar()
+label = Label( fuel, textvariable=var)
+var.set("Wszystkie tankowania.")
+label.pack({"side":"top"})
+
+w_tankowania = Text(fuel, height = 6, width = 42)
+w_tankowania.insert(INSERT, paliwo)
+w_tankowania.pack({"side":"top"})
+
+var = StringVar()
+label = Label( fuel, textvariable=var)
+var.set("Ostatnie tankowanie.")
+label.pack({"side":"top"})
+
+ost_tankowanie = Text(fuel, height = 1, width = 42)
+ost_tankowanie.insert(INSERT, ost)
+ost_tankowanie.pack({"side":"top"})
 
 fuel = Application(master=fuel)
 fuel.mainloop()
