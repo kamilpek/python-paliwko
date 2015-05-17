@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from Tkinter import *
 import Tkinter
 import Tkinter as tk
@@ -62,7 +64,7 @@ licznik.focus()
 
 var = StringVar()
 label = Label( fuel, textvariable=var)
-var.set("Podaj ilosc zatankowanego paliwa.")
+var.set("Podaj ilość zatankowanego paliwa.")
 label.pack()
 ilosc = tk.Entry(fuel, width = 30, bg = "white", font = "Helvetica 14")
 ilosc.pack()

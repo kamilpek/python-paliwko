@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from Tkinter import *
 import Tkinter
 import Tkinter as tk
@@ -73,7 +75,7 @@ ost_tankowanie.pack({"side":"top"})
 
 var = StringVar()
 label = Label( fuel, textvariable=var)
-var.set("Najnizsza cena paliwa.")
+var.set("Najniższa cena paliwa.")
 label.pack({"side":"top"})
 
 ost_tankowanie = Text(fuel, height = 1, width = 42)
@@ -82,7 +84,7 @@ ost_tankowanie.pack({"side":"top"})
 
 var = StringVar()
 label = Label( fuel, textvariable=var)
-var.set("Najwyzsza cena paliwa.")
+var.set("Najwyższa cena paliwa.")
 label.pack({"side":"top"})
 
 ost_tankowanie = Text(fuel, height = 1, width = 42)
@@ -91,7 +93,7 @@ ost_tankowanie.pack({"side":"top"})
 
 var = StringVar()
 label = Label( fuel, textvariable=var)
-var.set("Najwieksza ilosc zatankowanego paliwa.")
+var.set("Największa ilość zatankowanego paliwa.")
 label.pack({"side":"top"})
 
 ost_tankowanie = Text(fuel, height = 1, width = 42)

@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from Tkinter import *
 import Tkinter
 import Tkinter as tk
@@ -7,7 +9,7 @@ import sys
 from os import popen
 
 fuel = Tk()
-fuel.title("Paliwko ver. 2.9.1")
+fuel.title("Paliwko ver. 2.9.2")
 
 con = lite.connect('paliwko.db')
 cur = con.cursor()
@@ -29,7 +31,7 @@ class Application(Frame):
 					
     def createWidgets(self):
         self.QUIT = Button(self)
-        self.QUIT["text"] = "Koniec programu"
+        self.QUIT["text"] = "Wyjście z Programu"
         self.QUIT["command"] =  self.quit
         self.QUIT.pack({"side": "bottom"})
        
@@ -44,7 +46,7 @@ class Application(Frame):
         self.dziennik.pack({"side":"top"})
         
         self.czysc = Button(self)
-        self.czysc["text"] = "Wyczysc_Baze",
+        self.czysc["text"] = "Wyczyść_Baze",
         self.czysc["command"] = self.czyszczenie
         self.czysc.pack({"side":"top"})
                
