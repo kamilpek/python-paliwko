@@ -11,5 +11,5 @@
 
 ---
 ###Der Brennstoff Kalkulator. Version 2.9.2
-* Die Projekt Python-Anewndungen mit Helfe der Tkinter Biblithek und Relationale Datenbank SQLite.
+* Projekt Python-Anewndungen mit der Tkinter Biblithek und Relationale Datenbank SQLite.
 * Letztes Aktualisierung: 16.05.2015
